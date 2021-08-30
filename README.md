@@ -1,1 +1,1 @@
-# Finale_JustThinkIt
+# justThinkIt

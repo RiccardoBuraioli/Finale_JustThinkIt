@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Finale_JustThinkIt">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Test"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/bin"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Driver"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Logic"/>
+        <property name="context-root" value="Finale_JustThinkIt"/>
+        <property name="java-output-path" value="/Finale_JustThinkIt/build/classes"/>
+    </wb-module>
+</project-modules>
