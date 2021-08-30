@@ -1,0 +1,1 @@
+sonar-scanner.bat -D"sonar.organization=riccardoburaioli" -D"sonar.projectKey=RiccardoBuraioli_Finale_JustThinkIt" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" 
