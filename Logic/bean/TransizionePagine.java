@@ -9,6 +9,7 @@ import com.sothawo.mapjfx.Projection;
 
 import controller.CaritasHomeController;
 import controller.CercaCaritasController;
+import controller.ShopHomeController;
 import exception.MyException;
 import exception.MyIOException;
 import exception.Trigger;
@@ -27,6 +28,26 @@ public class TransizionePagine {
 
 	private static Logger logger = LoggerFactory.getLogger(TransizionePagine.class.getName());
 
+	
+	
+	public void visualizzaShopHomePage( Window stage, int idShop) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
+			Parent root = loader.load();
+			ShopHomeBoundary  shopC= loader.getController();
+			ShopHomeController shopHomeC = new ShopHomeController();
+			shopHomeC.initDataShop(idShop, shopC);
+			Stage home = (Stage) stage.getScene().getWindow();
+			home.setScene(new Scene(root, 800, 600));
+
+			home.show();
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("ShopHomePage");
+		}
+
+	}
+	
 	
 				
 	public void visualizzaPagina(String pagina, Window stage){

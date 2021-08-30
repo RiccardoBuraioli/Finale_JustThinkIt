@@ -68,20 +68,8 @@ public class GestisciEventiPropCaritas {
     @FXML
     void backButtonPressed(ActionEvent event) {
     	
-    	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
-			Parent root = loader.load();
-			ShopHomeBoundary  shopC= loader.getController();
-			ShopHomeController shopHomeC = new ShopHomeController();
-			shopHomeC.initDataShop(idShop, shopC);
-			Stage home = (Stage) back.getScene().getWindow();
-			home.setScene(new Scene(root, 800, 600));
-
-			home.show();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Turni Caritas");
-		}
+    	TransizionePagine pagine = new TransizionePagine();
+    	pagine.visualizzaShopHomePage( back.getScene().getWindow(), idShop);
 
     }
 

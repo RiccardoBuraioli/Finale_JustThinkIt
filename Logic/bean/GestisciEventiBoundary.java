@@ -69,28 +69,15 @@ public class GestisciEventiBoundary {
 	
 	@FXML
 	void backButtonPressed(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
-			Parent root = loader.load();
-			ShopHomeBoundary  shopC= loader.getController();
-			ShopHomeController shopHomeC = new ShopHomeController();
-			shopHomeC.initDataShop(idShop, shopC);
-			Stage home = (Stage) back.getScene().getWindow();
-			home.setScene(new Scene(root, 800, 600));
-
-			home.show();
-		} catch (IOException e) {
-			logger.error(s);
-		}
-
+	TransizionePagine pagine = new TransizionePagine();
+	pagine.visualizzaShopHomePage( back.getScene().getWindow(), idShop);
 	}
 
 	@FXML
 	void contattaCaritas(ActionEvent event) {
-		try {
-			if (check()) {
+		
 				try {
-					
+					check();
 					FXMLLoader fxmlLoader = new FXMLLoader();
 					Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Email.fxml"));
 
@@ -103,16 +90,13 @@ public class GestisciEventiBoundary {
 					stage.setResizable(false);
 					stage.show();
 
-				} catch (Exception e) {
+					} catch (Exception e) {
 					logger.error(e.getMessage());
 					MyIOException.openPageFault("Email");
 				}
 			}
-		} catch (MyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
+		
+		
 			
 		
 
@@ -121,9 +105,9 @@ public class GestisciEventiBoundary {
 	@FXML
 	public void eliminaEvento(ActionEvent event) {
 		try {
-			if(check()) {
-				gestEventC.cancellaEvento(this.event.getId());
-			}
+			check();
+			gestEventC.cancellaEvento(this.event.getId());
+			
 		}catch(MyException ex) {
 			logger.error(ex.getMessage());
 		}

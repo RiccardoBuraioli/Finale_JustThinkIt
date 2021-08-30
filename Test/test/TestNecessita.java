@@ -9,10 +9,7 @@ import controller.CreaNecessitaController;
 public class TestNecessita {
 	CreaNecessitaController creaNece = CreaNecessitaController.getInstace();
 	
-	public TestNecessita() {
-		
-	}
-	
+
 	
 	@Test
 	public void testNece() {

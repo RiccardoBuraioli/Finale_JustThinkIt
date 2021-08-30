@@ -17,7 +17,10 @@ public class Trigger {
 			  e.setErrorNumber(MyException.CAMPI_VUOTI);
 			  throw e;  
 		  }else{
-			  Float.parseFloat(str);	  
+			 if(Float.parseFloat(str)== 0) {	
+			 MyException e = new MyException("Il numero inserito non è corretto");
+			 e.setErrorNumber(MyException.CAMPI_VUOTI);
+			 throw e;}
 		  }
 		    return true;     
 		}
@@ -28,7 +31,10 @@ public class Trigger {
 			  e.setErrorNumber(MyException.CAMPI_VUOTI);
 			  throw e;  
 		  }else{
-			  Float.parseFloat(str);	  
+			 if(Float.parseFloat(str)== 0) {	
+			MyException e = new MyException("Il numero inserito non è corretto");
+			e.setErrorNumber(MyException.CARITAS_ERROR);
+					 throw e;};	  
 		  }
 		    return true;     
 		}

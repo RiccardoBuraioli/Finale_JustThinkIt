@@ -9,9 +9,7 @@ import controller.PartecipaEventoController;
 public class TestPartecipaEvento {
 	PartecipaEventoController partecipaEv = PartecipaEventoController.getInstance();
 	
-	public TestPartecipaEvento() {
-		
-	}
+
 	@Test
 	public void testParte() {
 		this.partecipaEv.setDataController(1,3);
