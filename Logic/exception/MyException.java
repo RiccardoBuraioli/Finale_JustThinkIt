@@ -14,32 +14,31 @@ public class MyException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int errorCode;
+	private final int errorCode;
 
-	public MyException() {
-		errorCode=0;
-	}
 	
 	
-	public MyException (String message) {
+	
+	public MyException (String message, int errorCode) {
 		super(message);
+		this.errorCode = errorCode;
 	}
 	
-	public MyException (Throwable cause) {
+	public MyException (Throwable cause, int errorCode) {
 		super(cause);
+		this.errorCode = errorCode;
+
 	}
 
-	public MyException (String message, Throwable cause) {
+	public MyException (String message, Throwable cause, int errorCode) {
 		super(" +++ " + message + " +++ ", cause);
+		this.errorCode = errorCode;
+
 	}
 
-	public void setErrorNumber(int i) {
-		errorCode = i;
-		
-	}
 
 	public int getErrorNumber() {
-		return errorCode;
+		return this.errorCode;
 	}
 	
 	@Override

@@ -59,8 +59,7 @@ public class ProponiOffertaCaritas {
   
     public boolean check() throws MyException {
     	if(dataEvento.getValue() == null) {
-    		MyException e = new MyException("Alcuni campi sono vuoti");
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
+    		MyException e = new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
 			throw e;
     	}
 		return true;

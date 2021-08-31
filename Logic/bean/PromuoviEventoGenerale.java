@@ -114,8 +114,7 @@ public class PromuoviEventoGenerale {
 		}
 		
 		if(nome.getText().isEmpty() || !idCibo.isSelected() && !idVestiti.isSelected() && !tutto.isSelected()) {
-			MyException e = new MyException("Alcuni campi sono vuoti.");
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
 			throw e;
 		}
 		return true; 				

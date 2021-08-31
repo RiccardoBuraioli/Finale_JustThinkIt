@@ -132,13 +132,11 @@ public class GestisciTurniBoundary {
 
 	public boolean check() throws MyException{
 		if(this.turn == null) {
-			MyException e = new MyException("Devi selezionare una riga della tabella");
-			e.setErrorNumber(MyException.CARITAS_ERROR);
+			MyException e = new MyException("Devi selezionare una riga della tabella",MyException.CARITAS_ERROR);
 			throw e;	
 		}
 		if(newNote.getText() == null) {
-			MyException e = new MyException("Alcuni campi sono vuoti");
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			MyException e = new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
 			throw e;	
 		}
 		return true;

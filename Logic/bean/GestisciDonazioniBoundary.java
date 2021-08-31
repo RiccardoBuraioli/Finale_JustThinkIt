@@ -117,8 +117,7 @@ public class GestisciDonazioniBoundary {
 
 	public boolean check() throws MyException{
 		if(this.idDono == 0 && this.idVolontario == 0) {
-			MyException e = new MyException("Devi selezionare una riga della tabella");
-			e.setErrorNumber(MyException.CARITAS_ERROR);
+			MyException e = new MyException("Devi selezionare una riga della tabella",MyException.CARITAS_ERROR);
 			throw e;
 			
 		}

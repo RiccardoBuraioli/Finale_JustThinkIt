@@ -122,8 +122,7 @@ public class GestisciEventiBoundary {
 	
 	public boolean check() throws MyException {
 		if(this.event == null && this.idCaritas == 0) {
-			MyException e = new MyException("Devi selezionare una riga della tabella.");
-			e.setErrorNumber(MyException.NEGOZIO_ERROR);
+			MyException e = new MyException("Devi selezionare una riga della tabella.",MyException.NEGOZIO_ERROR);
 			throw e;
 		}
 		return true;

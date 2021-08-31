@@ -101,13 +101,12 @@ public class RegistrationShopBoundary {
 	}
 
 	public boolean checker() throws MyException {
-		MyException e = new MyException("Alcuni campi sono vuoti.");
+		MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
 		// Controlla che non ci siano campi lasciati vuoti
 
 		if (cittaResNeg.getText().isEmpty() || viaNeg.getText().isEmpty() || civicoNeg.getText().isEmpty()
 				|| telNeg.getText().isEmpty() || nomeNegozio.getText().isEmpty() || mailNeg.getText().isEmpty()) {
 
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
 			throw e;
 
 		}
@@ -116,7 +115,6 @@ public class RegistrationShopBoundary {
 		} else if (typeVestNeg.isSelected()) {
 			tipo = "Vestiti";
 		} else {
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
 			throw e;
 		}
 

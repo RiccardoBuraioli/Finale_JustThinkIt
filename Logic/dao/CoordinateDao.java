@@ -43,20 +43,10 @@ public class CoordinateDao {
         	   UpdateQueryDao upQuery = new UpdateQueryDao();
         	   upQuery.updateQuery(pstmt);
 
-              /* int rowAffected = pstmt.executeUpdate();
-               if (rowAffected == 1) {
-
-                   rs = pstmt.getGeneratedKeys();
-             
-               }*/
+            
            } catch (SQLException ex) {
                logger.debug(ex.getMessage());
-           }  /*  finally {
-               try {
-                   if (rs != null) rs.close();
-               } catch (SQLException e) {
-                   logger.debug(e.getMessage());
-               }*/
+           } 
            }
   
     	

@@ -224,13 +224,6 @@ public class TransizionePagine {
 		}
 
 	
-	public void check() {
-		Trigger trigger = new Trigger();
-		try {
-			trigger.myTrigger();
-		} catch (MyException e) {
-			logger.error("Alcuni campi sono vuoti");
-		}
-	}
+
 	
 }

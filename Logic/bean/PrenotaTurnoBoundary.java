@@ -65,13 +65,11 @@ public class PrenotaTurnoBoundary {
 	public boolean checker() throws MyException {
 		if(turni.getValue() == null || cbOraInizio.getValue() == null || cbOraFine.getValue() == null 
 				|| cv.getText().isEmpty()) {
-			MyException e = new MyException("Alcuni campi sono vuoti");
-			e.setErrorNumber(MyException.VOLONTARIO_ERROR);
+			MyException e = new MyException("Alcuni campi sono vuoti",MyException.VOLONTARIO_ERROR);
 			throw e;
 		}
 		if(cbOraInizio.getValue().toString().equals(cbOraFine.getValue())) {
-			MyException ex = new MyException("Inserisci orari diversi");
-			ex.setErrorNumber(MyException.VOLONTARIO_ERROR);
+			MyException ex = new MyException("Inserisci orari diversi",MyException.VOLONTARIO_ERROR);
 			throw ex;
 		}
 		return true;

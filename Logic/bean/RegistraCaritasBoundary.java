@@ -105,12 +105,12 @@ public class RegistraCaritasBoundary {
 	}
 
 	public boolean checker() throws MyException {
-		MyException e = new MyException("Alcuni campi sono vuoti.");
+		MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
 		// Controlla che non ci siano campi lasciati vuoti
 
 		if (cittadiResidenza.getText().isEmpty() || via.getText().isEmpty() || civico.getText().isEmpty()
 				|| telefono.getText().isEmpty() || nomeCaritas.getText().isEmpty() || email.getText().isEmpty()) {
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			
 
 			throw e;
 		}
@@ -122,7 +122,6 @@ public class RegistraCaritasBoundary {
 		} else if (type.isSelected()) {
 			tipo = "Vestiti";
 		} else {
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
 			throw e;// Almeno uno dei tipi deve essere selezionato
 		}
 

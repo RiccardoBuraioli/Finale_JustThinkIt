@@ -47,8 +47,9 @@ public class CercaCaritas {
 	
 	
 	public enum MarkerType {
-		CARITAS, EVENTO, DONAZIONE, MAP
+		CARITASMARKER, EVENTO, DONAZIONE, MAP
 	}
+	
 	private static final String EVE = "buttonEvento";
 	private static final String PRO = "buttonPromuoviEvento";
 	private static final String ALL = "buttonAllLocations";
@@ -59,9 +60,9 @@ public class CercaCaritas {
 	private int idEvento;
 	private String ruolo;
 	private int idUser;
-	private static final String volunteer = "Volontario";
-	private static final String shop = "Negozio";
-	private static final String caritas = "Caritas";
+	private static final String VOLUNTEER = "Volontario";
+	private static final String SHOP = "Negozio";
+	private static final String CARITAS = "Caritas";
 	
 	/** logger for the class. */
 	private static final Logger logger = LoggerFactory.getLogger(CercaCaritas.class);
@@ -216,7 +217,7 @@ public class CercaCaritas {
 	String	s = "errore IoException";
 	private void indietro() {
 	
-	if (ruolo.equals(volunteer)) {
+	if (ruolo.equals(this.VOLUNTEER)) {
 		 try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/UserHomePage.fxml"));
 				Parent root = loader.load();
@@ -234,7 +235,7 @@ public class CercaCaritas {
 	}
 	
 	
-	else if(ruolo.equalsIgnoreCase(shop)) {
+	else if(ruolo.equalsIgnoreCase(SHOP)) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
 			Parent root = loader.load();
@@ -252,7 +253,7 @@ public class CercaCaritas {
 		}
 	}
 	
-	else if(ruolo.equalsIgnoreCase(caritas)) {
+	else if(ruolo.equalsIgnoreCase(CARITAS)) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/CaritasHomePage.fxml"));
 			Parent root = loader.load();
@@ -404,7 +405,7 @@ public class CercaCaritas {
 		this.ruolo = ruolo;
 		this.idUser = idUser;
 		
-		if (this.ruolo.contentEquals(caritas)) {
+		if (this.ruolo.contentEquals(CARITAS)) {
 		markerEventi =	cercaController.initMarkersEvento(this.idUser);
 		for (MarkerID markerE : markerEventi) {
 			markerE.getMarker().setVisible(false);
@@ -413,7 +414,7 @@ public class CercaCaritas {
 		for (MarkerID markerD : markerDonazioni) {
 			markerD.getMarker().setVisible(false);
 		}
-		}else if(this.ruolo.contentEquals(volunteer)) {
+		}else if(this.ruolo.contentEquals(VOLUNTEER)) {
 			markerEventi=cercaController.initMarkersEvento();
 			for (MarkerID markerE : markerEventi) {
 				markerE.getMarker().setVisible(false);
@@ -503,15 +504,15 @@ public class CercaCaritas {
 
 		setupEventHandlers();
 		switch (this.ruolo) {
-		case volunteer:
+		case VOLUNTEER:
 			setMarkerVolontario();
 			break;
 			
-		case shop:
+		case SHOP:
 			setMarkerNegozio();
 			break;
 			
-		case caritas:
+		case CARITAS:
 			setMarkerCaritas();
 			break;
 			
@@ -655,7 +656,7 @@ public class CercaCaritas {
 			for (MarkerID markerC : markerCaritas) {
 				if (marker.getId().equals(markerC.getMarker().getId())) {
 					logger.debug("Hai cliccato sulla caritas.");
-					updateButtonsBox(MarkerType.CARITAS);
+					updateButtonsBox(MarkerType.CARITASMARKER);
 					idCaritas = markerC.getId();
 				}
 			}
@@ -727,7 +728,7 @@ public class CercaCaritas {
 		for (Node node : lista) {
 			Button btn = (Button) node;
 			switch (ruolo) {
-			case volunteer:
+			case VOLUNTEER:
 				switch (btn.getId()) {
 				case PRO:
 				case BAC:
@@ -740,7 +741,7 @@ public class CercaCaritas {
 					break;
 				}
 				break;
-			case shop:
+			case SHOP:
 				switch (btn.getId()) {
 				case EVE:
 				case PRO:
@@ -765,7 +766,8 @@ public class CercaCaritas {
 	public void removeButtonCaritas(String ruolo,ObservableList<Node> lista, List<Node> listaBottoniDaRimuovere) {
 		for (Node node : lista) {
 			Button btn = (Button) node;
-			if (ruolo.equalsIgnoreCase(volunteer)) {
+			switch (ruolo) {
+			case VOLUNTEER:
 				switch (btn.getId()) {
 				case EVE:
 				case PRO:
@@ -776,11 +778,11 @@ public class CercaCaritas {
 				default:
 					break;
 				}
-			}
+			break;
 
 	
 
-			if (ruolo.equalsIgnoreCase(shop)) {
+		case SHOP:
 				switch (btn.getId()) {
 				case EVE:
 				case TURN:
@@ -791,9 +793,10 @@ public class CercaCaritas {
 				default:
 					break;
 				}
-			}
 			
-			if(ruolo.equalsIgnoreCase(caritas)) {
+			break;
+			
+		case CARITAS:
 				switch(btn.getId()) {
 					case EVE:
 					case TURN:
@@ -805,16 +808,18 @@ public class CercaCaritas {
 					default:
 						break;
 				}
+				break;
 			}
 		}
 	}
+	
 	
 	public void searchButtonsToRemoveByUser(String ruolo, MarkerType type, ObservableList<Node> lista,
 			List<Node> listaBottoniDaRimuovere) {
 	
 		
 		
-		if (type.equals(MarkerType.CARITAS)) {
+		if (type.equals(MarkerType.CARITASMARKER)) {
 		removeButtonCaritas( ruolo,lista,listaBottoniDaRimuovere);
 		}
 		if (type.equals(MarkerType.EVENTO)) {
@@ -854,12 +859,12 @@ public class CercaCaritas {
 		mapView.setCenter(RomaCentro);
 		// add the markers to the map - they are still invisible
 
-		if (this.ruolo.contentEquals(caritas) || this.ruolo.contentEquals(volunteer)) {
+		if (this.ruolo.contentEquals(CARITAS) || this.ruolo.contentEquals(VOLUNTEER)) {
 		for (int i = 0; i < markerEventi.size(); i++) {
 			mapView.addMarker(markerEventi.get(i).getMarker());
 		}}
 	
-		if(this.ruolo.contentEquals(caritas)) {
+		if(this.ruolo.contentEquals(CARITAS)) {
 		for (int i = 0; i < markerDonazioni.size(); i++) {
 			mapView.addMarker(markerDonazioni.get(i).getMarker());
 		}}

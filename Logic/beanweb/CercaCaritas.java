@@ -78,11 +78,7 @@ public class CercaCaritas {
 			promuoviEventoBoundary = promuoviEventoBoundary.getInstance();
 			promuoviEventoBoundary.loadFormBoundary(idCar, this.idUser);
 		}else {
-			try {
-				trigger.myTrigger();
-			} catch (MyException e) {
-				logger.error("Bisogna selezionare un marker");
-			}
+			logger.error("id della caritas non trovato");
 		}
 	}
 

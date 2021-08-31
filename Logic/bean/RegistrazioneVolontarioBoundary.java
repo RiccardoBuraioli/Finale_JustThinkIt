@@ -113,8 +113,7 @@ public class RegistrazioneVolontarioBoundary {
 		if (nome.getText().isEmpty() || mail.getText().isEmpty() || cittaRes.getText().isEmpty()
 				|| cognome.getText().isEmpty() || civico.getText().isEmpty() || via.getText().isEmpty()
 				|| tel.getText().isEmpty()) {
-			MyException e = new MyException("Alcuni campi sono vuoti.");
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
 			throw e;
 		}
 
