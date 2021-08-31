@@ -17,7 +17,7 @@ public class MyException extends Exception {
 	private int errorCode;
 
 	public MyException() {
-		
+		errorCode=0;
 	}
 	
 	

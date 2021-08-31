@@ -30,7 +30,6 @@ public class CoordinateDao {
  
     
     public void setCoordinate(int idUtente,String lat, String lon) {
-    	   ResultSet rs = null;
          
            String sql = "call aggiungi_coordinate(?,?,?)";
 

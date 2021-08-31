@@ -64,7 +64,6 @@ public class BachecaDao {
 	}
 	
 	public boolean creaNecessita(Necessita necessita, int codCaritas) {
-		 ResultSet rs = null;
 	       
 
 	        String sql = "call crea_necessità(?,?,?,?)";
