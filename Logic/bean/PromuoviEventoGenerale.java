@@ -73,10 +73,10 @@ public class PromuoviEventoGenerale {
 		GestisciEventiCaritasController controller = new GestisciEventiCaritasController();
 		float x = (float) 0.0;
 			try {
-				if (checker() == true ) {
+					checker();
 					controller.creaEventoGeneral(nome.getText(), tipo, x, note.getText(), this.idCar, this.idShop);
 					this.switchPage(confermaEventoPressed.getScene().getWindow());
-}
+
 			} catch (MyException e) {
 				logger.error(e.getMessage());
 			}

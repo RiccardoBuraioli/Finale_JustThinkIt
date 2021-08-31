@@ -44,7 +44,7 @@ import java.util.List;
 
 public class CercaCaritas {
 
-	private DonationBoundary donation;
+	
 	
 	public enum MarkerType {
 		CARITAS, EVENTO, DONAZIONE, MAP

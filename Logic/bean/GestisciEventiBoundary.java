@@ -32,7 +32,6 @@ public class GestisciEventiBoundary {
 	private GestisciEventiController gestEventC;
 	private int idShop;
 	private int idCaritas;
-	private String s = "error IoException";
 	private EventTab event;
 
 	@FXML

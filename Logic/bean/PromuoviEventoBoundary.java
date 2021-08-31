@@ -44,10 +44,10 @@ public class PromuoviEventoBoundary {
 
 	    @FXML
 		void confermaPressed(ActionEvent event) {
-	    	Trigger trigger = new Trigger();
 	    	PromuoviEventoController promuoviEvento = new PromuoviEventoController();
+	    	Trigger trigger = new Trigger();
 			try {
-				if (checker() ) {
+				if (checker() && trigger.isNumeric(prezzo.getText())) {
 					promuoviEvento.creaEventoController(nome.getText(), tipo, note.getText(), Float.parseFloat(prezzo.getText()), idCar, idShop);
 				}
 			} catch (NumberFormatException n) {

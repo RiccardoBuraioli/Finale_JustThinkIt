@@ -1,6 +1,5 @@
 package bean;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.RegistrationShopManagerController;
@@ -19,15 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class RegistrationShopBoundary  {
+public class RegistrationShopBoundary {
 	private RegistrationShopManagerController regNeg;
-
-
 
 	private String tipo;
 	Logger logger = LoggerFactory.getLogger(RegistrationShopBoundary.class.getName());
-
-
 
 	@FXML
 	private TextField cittaResNeg;
@@ -83,59 +78,48 @@ public class RegistrationShopBoundary  {
 	@FXML
 	void registraNegozioPressed(ActionEvent event) {
 		Trigger trigger = new Trigger();
-		try {
-			if(checker() && trigger.isNumeric(telNeg.getText()) && trigger.isNumeric(civicoNeg.getText())) {
-			try {
-				 regNeg.registraNegozioPressed(tipo, nomeNegozio.getText(), passwordNeg.getText(),
-						viaNeg.getText() + " " + civicoNeg.getText(), telNeg.getText(), mailNeg.getText(),
-						cittaResNeg.getText());
-				
 
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
-					Parent root = loader.load();
-					Stage home = (Stage) registraNegozio.getScene().getWindow();
-					home.setScene(new Scene(root));
-					home.show();
-				} catch (Exception e) {
-					logger.error(e.getMessage());
-					MyIOException.openPageFault("Login");
-				}
-			}
+		try {
+			checker();
+			trigger.isNumeric(telNeg.getText());
+			trigger.isNumeric(civicoNeg.getText());
+			regNeg.registraNegozioPressed(tipo, nomeNegozio.getText(), passwordNeg.getText(),
+					viaNeg.getText() + " " + civicoNeg.getText(), telNeg.getText(), mailNeg.getText(),
+					cittaResNeg.getText());
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
+			Parent root = loader.load();
+			Stage home = (Stage) registraNegozio.getScene().getWindow();
+			home.setScene(new Scene(root));
+			home.show();
 		} catch (NumberFormatException e) {
 			logger.error("Non sono presenti solo numeri in Telefono o N civico" + e.getMessage());
-		} catch (MyException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Login");
 		}
-		}
-		
-
-	
-
+	}
 
 	public boolean checker() throws MyException {
 		MyException e = new MyException("Alcuni campi sono vuoti.");
 		// Controlla che non ci siano campi lasciati vuoti
 
-			if (cittaResNeg.getText().isEmpty() || viaNeg.getText().isEmpty() || civicoNeg.getText().isEmpty()
-					||telNeg.getText().isEmpty() || nomeNegozio.getText().isEmpty() ||
-					mailNeg.getText().isEmpty()) {
-			
-			
-				e.setErrorNumber(MyException.CAMPI_VUOTI);
-				throw e;
-			
+		if (cittaResNeg.getText().isEmpty() || viaNeg.getText().isEmpty() || civicoNeg.getText().isEmpty()
+				|| telNeg.getText().isEmpty() || nomeNegozio.getText().isEmpty() || mailNeg.getText().isEmpty()) {
+
+			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			throw e;
+
 		}
-		if(typeCiboNeg.isSelected()) {
+		if (typeCiboNeg.isSelected()) {
 			tipo = "Cibo";
-		}
-		else if(typeVestNeg.isSelected()) {
+		} else if (typeVestNeg.isSelected()) {
 			tipo = "Vestiti";
-		}
-		else {
+		} else {
 			e.setErrorNumber(MyException.CAMPI_VUOTI);
 			throw e;
 		}
-		
+
 		// Valida che i campi password e conferma password siano uguali
 
 		if (passwordNeg.getText().equals(confermaPassNeg.getText()) && !passwordNeg.getText().equals("")) {
@@ -147,7 +131,5 @@ public class RegistrationShopBoundary  {
 			return false;
 		}
 	}
-
-
 
 }

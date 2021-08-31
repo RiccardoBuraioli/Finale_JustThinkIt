@@ -1,8 +1,5 @@
 package bean;
 
-
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import controller.RegistrazioneVolontarioController;
@@ -22,14 +19,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class RegistrazioneVolontarioBoundary  {
+public class RegistrazioneVolontarioBoundary {
 	private RegistrazioneVolontarioController regC;
-	
-
-
-	
-
-	
 
 	@FXML
 	private TextField cittaRes;
@@ -73,12 +64,9 @@ public class RegistrazioneVolontarioBoundary  {
 	@FXML
 	private DatePicker date;
 
-
-
 	public RegistrazioneVolontarioBoundary() {
-		regC = new RegistrazioneVolontarioController();	
+		regC = new RegistrazioneVolontarioController();
 	}
-	
 
 	@FXML
 	void backButtonPres(ActionEvent event) {
@@ -88,61 +76,57 @@ public class RegistrazioneVolontarioBoundary  {
 		pageswitch.visualizzaPagina(pagina, stage);
 
 	}
-	
+
 	@FXML
 	void registraVolontarioPressed(ActionEvent event) {
 		Logger logger = LoggerFactory.getLogger(RegistrazioneVolontarioBoundary.class.getName());
 		Trigger trigger = new Trigger();
-		
-		
-			try {
-				if(checker() && trigger.isNumeric(tel.getText()) && trigger.isNumeric(civico.getText())) {
-				try {
-					
-				 regC.completaButtonPressed(nome.getText(), cognome.getText(), password.getText(),
-							via.getText(),tel.getText(), mail.getText(), date.getValue().toString(), cittaRes.getText());
 
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
-					Parent root = loader.load();
-					Stage home = (Stage) completaReg.getScene().getWindow();
-					home.setScene(new Scene(root));
+		try {
+			checker();
+			trigger.isNumeric(tel.getText());
+			trigger.isNumeric(civico.getText());
+			regC.completaButtonPressed(nome.getText(), cognome.getText(), password.getText(), via.getText(),
+					tel.getText(), mail.getText(), date.getValue().toString(), cittaRes.getText());
 
-					home.show();
-				} catch (Exception e) {
-					logger.error(e.getMessage());
-					MyIOException.openPageFault("login");
-					
-				}
-				}
-			} catch (NumberFormatException e) {
-				logger.error("Non sono presenti solo numeri in Telefono o N civico" + e.getMessage());
-			} catch (MyException e) {
-				logger.error(e.getMessage());
-			}
-		
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
+			Parent root = loader.load();
+			Stage home = (Stage) completaReg.getScene().getWindow();
+			home.setScene(new Scene(root));
+
+			home.show();
+		} catch (NumberFormatException e) {
+			logger.error("Non sono presenti solo numeri in Telefono o N civico" + e.getMessage());
+		} catch (MyException e) {
+			logger.error(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("login");
+
+		}
+
 	}
 
-
-	public boolean checker() throws MyException{
+	public boolean checker() throws MyException {
 
 		// Controlla che non ci siano campi lasciati vuoti
-			if (nome.getText().isEmpty() || mail.getText().isEmpty() || cittaRes.getText().isEmpty() || cognome.getText().isEmpty() ||
-					civico.getText().isEmpty() || via.getText().isEmpty() || tel.getText().isEmpty()) {
-				MyException e = new MyException("Alcuni campi sono vuoti.");
-				e.setErrorNumber(MyException.CAMPI_VUOTI);
-				throw e;		
-			}
-		
+		if (nome.getText().isEmpty() || mail.getText().isEmpty() || cittaRes.getText().isEmpty()
+				|| cognome.getText().isEmpty() || civico.getText().isEmpty() || via.getText().isEmpty()
+				|| tel.getText().isEmpty()) {
+			MyException e = new MyException("Alcuni campi sono vuoti.");
+			e.setErrorNumber(MyException.CAMPI_VUOTI);
+			throw e;
+		}
+
 		// Valida che i campi password e conferma password siano uguali
 		if (password.getText().equals(confermaPass.getText())) {
 			passwordMatch.setVisible(false);
-			
+
 		} else {
 			passwordMatch.setText("Le password non corrispondono");
 			passwordMatch.setVisible(true);
 		}
 		return true;
 	}
-
 
 }

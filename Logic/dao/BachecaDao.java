@@ -65,7 +65,7 @@ public class BachecaDao {
 	
 	public boolean creaNecessita(Necessita necessita, int codCaritas) {
 		 ResultSet rs = null;
-	        int necID = 0;
+	       
 
 	        String sql = "call crea_necessità(?,?,?,?)";
 
@@ -81,8 +81,7 @@ public class BachecaDao {
 	            if (rowAffected == 1) {
 
 	                rs = pstmt.getGeneratedKeys();
-	                if (rs.next())
-	                    necID = rs.getInt(1);
+	               
 	            }
 	        } catch (SQLException ex) {
 	        	  logger.debug(ex.getMessage());	

@@ -56,18 +56,20 @@ public class CreaTurnoBoundary {
 	}
 
 
-	public boolean checker() throws Exception {
+	public boolean checker() throws MyException {
 		// Controlla che non ci siano campi lasciati vuoti	
 		if(giorni.getValue() == null || orain.getValue() == null  || oraFin.getValue() == null || numParte.getText() == null) {
 			logger.error("Alcuni campi sono vuoti");
 			MyException ex = new MyException("Alcuni campi sono vuoti");
-			ex.setErrorNumber(100);
+			ex.setErrorNumber(ex.CAMPI_VUOTI);
+			
 			throw ex;
 			
 		}
 		if(orain.getValue() == oraFin.getValue()) {
 			logger.error("Devi inserire orari diversi");
-			Exception ex = new Exception("Devi inserire orari diversi");
+			MyException ex = new MyException("Devi inserire orari diversi");
+			ex.setErrorNumber(ex.CARITAS_ERROR);
 			throw ex;
 		}
 		return true;
@@ -99,7 +101,7 @@ public class CreaTurnoBoundary {
 		} catch (NumberFormatException e) {
 			
 			logger.error(e.getMessage());
-			e.printStackTrace();
+		
 		} catch (MyException e) {
 		
 			logger.error(e.getMessage());

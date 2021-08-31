@@ -28,9 +28,6 @@ public class CreaNecessitaBoundary {
 	private TextArea[] text;
 
 
-	public CreaNecessitaBoundary() {
-		
-	}
 
 	@FXML
 	private TextArea descrizione;

@@ -34,7 +34,7 @@ public class Trigger {
 			 if(Float.parseFloat(str)== 0) {	
 			MyException e = new MyException("Il numero inserito non è corretto");
 			e.setErrorNumber(MyException.CARITAS_ERROR);
-					 throw e;};	  
+					 throw e;}  
 		  }
 		    return true;     
 		}
