@@ -14,8 +14,8 @@ public class MyIOException extends IOException{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String user;
-	UserDao userDao = new UserDao();
+	private String user;
+	private UserDao userDao = new UserDao();
 	
  public MyIOException() {
 	 super("Error IOException");
