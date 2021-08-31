@@ -66,8 +66,8 @@ public class CreaTurnoBoundary {
 		}
 		if(orain.getValue() == oraFin.getValue()) {
 			logger.error("Devi inserire orari diversi");
-			MyException ex = new MyException("Devi inserire orari diversi",MyException.CARITAS_ERROR);
-			throw ex;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+
 		}
 		return true;
 	}

@@ -34,10 +34,6 @@ public class CercaCaritas {
 	private String n = "Negozio";
 	private String c = "Caritas";
 	
-	private Trigger trigger;
-
-
-
 	private CercaCaritasController cercaController;
 	private DonationBoundary donationBoundary;
 	private PrenotaTurnoBoundary prenotaTurnoBoundary;
@@ -124,7 +120,6 @@ public class CercaCaritas {
 
 	public CercaCaritas(){
 		cercaController = new CercaCaritasController();
-		trigger = new Trigger();
 	}
 
 	public String trovaRuoloBean() {
