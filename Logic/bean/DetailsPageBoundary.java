@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import exception.MyIOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,9 +27,10 @@ public class DetailsPageBoundary {
 			signUp.setScene(scene);
 			signUp.show();
 			signUp.setResizable(false);
-		} catch (IOException e) {
-			logger.error("errore IoException"); }
-
+		}  catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("Registration Menu");
+		}
 
     }
 

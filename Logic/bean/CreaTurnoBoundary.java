@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.CreaTurnoController;
 import exception.MyException;
-import exception.Trigger;
+import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,59 +51,64 @@ public class CreaTurnoBoundary {
 	@FXML
 	void backPressed(ActionEvent event) {
 
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_turni_caritas.fxml"));
-			Parent root = loader.load();
-
-			Stage home = (Stage) back.getScene().getWindow();
-			GestisciTurniBoundary gestTurn;
-			gestTurn = loader.getController();
-			
-			gestTurn.loadFormBoundary(caritas);
-			home.setScene(new Scene(root, 883, 550));
-			home.show();
-
-		} catch (IOException e) {
-			logger.error("errore IoException");
-		}
+		this.switchPage(creaTurno.getScene().getWindow());
 
 	}
 
 
-	public boolean checker() throws MyException {
+	public boolean checker() throws Exception {
 		// Controlla che non ci siano campi lasciati vuoti	
 		if(giorni.getValue() == null || orain.getValue() == null  || oraFin.getValue() == null || numParte.getText() == null) {
-			MyException e = new MyException("Alcuni campi sono vuoti.");
-			e.setErrorNumber(MyException.CAMPI_VUOTI);
-			throw e;
+			logger.error("Alcuni campi sono vuoti");
+			MyException ex = new MyException("Alcuni campi sono vuoti");
+			ex.setErrorNumber(100);
+			throw ex;
+			
 		}
 		if(orain.getValue() == oraFin.getValue()) {
-			MyException ex = new MyException("Devi inserire orari diversi");
-			 ex.setErrorNumber(MyException.ORARIO);
+			logger.error("Devi inserire orari diversi");
+			Exception ex = new Exception("Devi inserire orari diversi");
 			throw ex;
 		}
 		return true;
 	}
+	
+	
 
 
+	public boolean isNumeric(String str) { 
+		  try {  
+		    Integer.parseInt(str); 
+		    return true;
+		  } catch(NumberFormatException e){  
+			  logger.error("Inserisci correttamente il numero di partecipanti");
+		    return false;  
+		  } 
+		}
 	
 	@FXML
 	void creaTurnoPressed(ActionEvent event) {
-		Trigger trigger = new Trigger(); 
 		CreaTurnoController creaTurn = new CreaTurnoController();
 		try {
-			if (checker() && trigger.isNumeric(numParte.getText())) {
-				creaTurn.creaTurno(caritas, giorni.getValue().toString(), orain.getValue().toString(), oraFin.getValue().toString(),
-						Integer.parseInt(numParte.getText()), note.getText());
-					this.switchPage(creaTurno.getScene().getWindow());
-			}}catch(MyException e) {
-				logger.error(e.getMessage());
-	  		}catch (NumberFormatException n) {
-	  			logger.error("Non sono presenti solo numeri \n" + n.getMessage());
-	  		}catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-		} 
+			if (checker() && isNumeric(numParte.getText())) {
+					creaTurn.creaTurno(caritas, giorni.getValue().toString(), orain.getValue().toString(), oraFin.getValue().toString(),
+							Integer.parseInt(numParte.getText()), note.getText());
+						this.switchPage(creaTurno.getScene().getWindow());
+				}
+			
+		} catch (NumberFormatException e) {
+			
+			logger.error(e.getMessage());
+			e.printStackTrace();
+		} catch (MyException e) {
+		
+			logger.error(e.getMessage());
+			logger.error("Il codice di errore "+ e.getErrorNumber());
+			e.printStackTrace();
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	} 
 	
 
 	public void setCaritas(int caritas) {
@@ -122,14 +127,15 @@ public class CreaTurnoBoundary {
 			GestisciTurniBoundary gest = loader.getController();
 			gest.loadFormBoundary(caritas); 
 
-		} catch (IOException e) {
+		}  catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Gestisci Turni Caritas");
 		}
 	}
 
 	@FXML
 	void initialize() {
-		String[] days = { "Lunedi", "Martedi", "Mercoledi", "Giovedi", "Venerdi", "Sabato", "Domenica" };
+		String[] days = { "Lunedi", "Martedì", "Mercoledi", "Giovedi", "Venerdi", "Sabato", "Domenica" };
 
 		for (int i = 0; i < 7; i++) {
 

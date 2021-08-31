@@ -10,6 +10,7 @@ import controller.CercaCaritasController;
 import controller.ShopHomeController;
 import controller.UserHomeController;
 import entity.MarkerID;
+import exception.MyIOException;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,7 +44,7 @@ import java.util.List;
 
 public class CercaCaritas {
 
-	
+	private DonationBoundary donation;
 	
 	public enum MarkerType {
 		CARITAS, EVENTO, DONAZIONE, MAP
@@ -264,8 +265,9 @@ public class CercaCaritas {
 			
 			home.show();
 			
-		} catch (IOException e) {
-			logger.error(s);
+		}  catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("Caritas Home Page");
 		}
 	}
 
@@ -293,8 +295,9 @@ public class CercaCaritas {
 
 			stage.show();
 
-		} catch (IOException e) {
+		}  catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Promuovi Evento");
 		}
 	
 
@@ -320,8 +323,9 @@ public class CercaCaritas {
 
 			stage.show();
 
-		} catch (IOException e) {
+		}  catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Bacheca");
 		}
 
 	}
@@ -343,19 +347,17 @@ public class CercaCaritas {
 			stage.setResizable(false);
 			stage.show();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Donation");
 		}
 
 	}
 
 	private void prenotaTurno(int idCar, int idUt) {
 		try {
-
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader
-					.load(getClass().getResourceAsStream("/boundary/Prenota_turno_volontariato.fxml"));
-
+			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Prenota_turno_volontariato.fxml"));
 			PrenotaTurnoBoundary prenotaController = fxmlLoader.getController();
 
 			Stage stage = new Stage();
@@ -365,8 +367,9 @@ public class CercaCaritas {
 			stage.setResizable(false);
 			stage.show();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Prenota Turno Volontario");
 		}
 
 	}
@@ -384,8 +387,9 @@ public class CercaCaritas {
 			stage.setScene(new Scene(rootNode, 600, 400));
 			stage.setResizable(false);
 			stage.show();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Partecipa Evento");
 		}
 
 	}

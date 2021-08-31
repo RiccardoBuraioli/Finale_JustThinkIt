@@ -75,9 +75,9 @@ public class GestisciEventiPropCaritas {
 
     @FXML
     void proposteNegozi(ActionEvent event) {
-		try {
-			if (check()) {
+	
 				try {
+					check();
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ProposteOfferte.fxml"));
 					Parent root = loader.load();
 
@@ -90,14 +90,12 @@ public class GestisciEventiPropCaritas {
 
 					stage.show();
 
-				} catch (IOException e) {
-					logger.error("IoException");
+				} catch (Exception e) {
+					logger.error(e.getMessage());
+					MyIOException.openPageFault("Proposte Offerte");
 				}
 			}
-		} catch (MyException e) {
-			logger.error(e.getMessage());
-		} 
-    }
+		
     
     
  

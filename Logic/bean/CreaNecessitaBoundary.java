@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.CreaNecessitaController;
 import exception.MyException;
+import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,10 @@ public class CreaNecessitaBoundary {
 
 	private TextArea[] text;
 
+
+	public CreaNecessitaBoundary() {
+		
+	}
 
 	@FXML
 	private TextArea descrizione;
@@ -53,23 +58,30 @@ public class CreaNecessitaBoundary {
 
 	@FXML
 	void creaAnnuncioPressed(ActionEvent event) {
-		CreaNecessitaController creaNec = CreaNecessitaController.getInstace();
+		CreaNecessitaController creaNec = new CreaNecessitaController();
 		creaNec.inizializza(idCaritas);
 		try{
-			if (checker()){
-			 creaNec.creaNecessita(tipologia.getValue().toString(), urgenza.getValue().toString(),
+			checker();
+		
+			boolean i = creaNec.creaNecessita(tipologia.getValue().toString(), urgenza.getValue().toString(),
 					descrizione.getText());
+			if (i) {
 				this.switchPage(creaAnnuncio.getScene().getWindow());
-			} 
+			} else {
+				logger.trace("errore nella creazione dell'annuncio");
+			}
+		
 		}catch(MyException e){
-			logger.error(e.getMessage());	
+			e.getMessage();
+			e.printStackTrace();		
 		}
 	}
 	
 	
 	public boolean checker() throws MyException {
-		if (this.text[0].getText().isEmpty() || this.tipologia.getValue() == null || this.urgenza.getValue() == null) {
-			MyException e = new MyException("Alcuni campi sono vuoti.");
+		if ( this.text[0].getText() == null || this.tipologia.getValue() == null || this.urgenza.getValue() == null) {
+			MyException e = new MyException("Alcuni campi sono vuoti");
+			
 			e.setErrorNumber(MyException.CARITAS_ERROR);
 			throw e;
 		}
@@ -101,8 +113,9 @@ public class CreaNecessitaBoundary {
 			BachecaPersonaleBoundary bacheca = loader.getController();
 			bacheca.loadFormBoundary(idCaritas);
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Bacheca Personale");
 		}
 	}
 

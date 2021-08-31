@@ -212,8 +212,9 @@ public class CaritasHomeBoundary {
 				stage.setResizable(false);
 				stage.show();
 
-			} catch (IOException e) {
+			} catch (Exception e) {
 				logger.error(e.getMessage());
+				MyIOException.openPageFault("Gestisci Offerte Caritas");
 			}
 	    	
 	    }

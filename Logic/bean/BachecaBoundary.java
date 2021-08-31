@@ -72,7 +72,7 @@ public class BachecaBoundary {
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			MyIOException.openPageFault("Email");
+			MyIOException.openPageFault("Donazione");
 		}
 
 	}
@@ -100,8 +100,9 @@ public class BachecaBoundary {
 
 			stage.show();
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error(e.getMessage());
+			MyIOException.openPageFault("Email");
 		}
 
 	}

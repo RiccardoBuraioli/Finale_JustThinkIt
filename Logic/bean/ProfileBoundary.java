@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.UserHomeController;
-
+import exception.MyIOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,8 +66,9 @@ public class ProfileBoundary{
 			home.setScene(new Scene(root, 800, 600));
 			
 			home.show();
-		} catch (IOException e) {
-			logger.error("errore IoException");
+		}  catch (Exception e) {
+			logger.error(e.getMessage());
+			MyIOException.openPageFault("User Home Page");
 		}
 
 

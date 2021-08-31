@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import controller.GestisciEventiCaritasController;
 import entity.EventTab;
 import exception.MyException;
+import exception.MyIOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -152,8 +153,9 @@ public class GestisciEventiCaritasBoundary {
 				home.setScene(new Scene(root, 750, 500));
 
 				home.show();
-			} catch (IOException e) {
+			}  catch (Exception e) {
 				logger.error(e.getMessage());
+				MyIOException.openPageFault("Proponi Evento Generale");
 			}
 		}
     
