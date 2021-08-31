@@ -809,6 +809,9 @@ public class CercaCaritas {
 						break;
 				}
 				break;
+				
+			default:
+				break;
 			}
 		}
 	}

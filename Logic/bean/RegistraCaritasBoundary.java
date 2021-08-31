@@ -95,9 +95,10 @@ public class RegistraCaritasBoundary {
 			home.show();
 
 		} catch (NumberFormatException e) {
-			logger.error("In Telefono o N civico non ci sono solo numeri" + e.getMessage());
+			logger.error("In Telefono ed in civico devono essere inseriti solo numeri" + e.getMessage());
 		} catch (MyException e) {
 			logger.error(e.getMessage());
+			
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			MyIOException.openPageFault("Login");
