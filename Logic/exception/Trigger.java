@@ -13,24 +13,24 @@ public class Trigger {
 	
 	 public boolean isNumeric(String str) throws MyException, NumberFormatException { 
 		  if (str.isEmpty()) {
-			  MyException e = new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
-			  throw e;  
+				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+
 		  }else{
 			 if(Float.parseFloat(str)== 0) {	
-			 MyException e = new MyException("Il numero inserito non è corretto",MyException.CAMPI_VUOTI);
-			 throw e;}
+					throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+}
 		  }
 		    return true;     
 		}
 	 
 	 public boolean isNumerico(String str) throws MyException, NumberFormatException { 
 		  if (str.isEmpty()) {
-			  MyException e = new MyException("Inserisci correttamente l'id", MyException.CAMPI_VUOTI);
-			  throw e;  
+				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+ 
 		  }else{
 			 if(Float.parseFloat(str)== 0) {	
-			MyException e = new MyException("Il numero inserito non è corretto",MyException.CARITAS_ERROR);
-					 throw e;}  
+					throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+}  
 		  }
 		    return true;     
 		}

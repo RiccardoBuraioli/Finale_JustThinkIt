@@ -113,8 +113,8 @@ public class RegistrazioneVolontarioBoundary {
 		if (nome.getText().isEmpty() || mail.getText().isEmpty() || cittaRes.getText().isEmpty()
 				|| cognome.getText().isEmpty() || civico.getText().isEmpty() || via.getText().isEmpty()
 				|| tel.getText().isEmpty()) {
-			MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
-			throw e;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+
 		}
 
 		// Valida che i campi password e conferma password siano uguali

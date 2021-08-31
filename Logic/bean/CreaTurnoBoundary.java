@@ -60,9 +60,8 @@ public class CreaTurnoBoundary {
 		// Controlla che non ci siano campi lasciati vuoti	
 		if(giorni.getValue() == null || orain.getValue() == null  || oraFin.getValue() == null || numParte.getText() == null) {
 			logger.error("Alcuni campi sono vuoti");
-			MyException ex = new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
-			
-			throw ex;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+
 			
 		}
 		if(orain.getValue() == oraFin.getValue()) {

@@ -114,8 +114,8 @@ public class PromuoviEventoGenerale {
 		}
 		
 		if(nome.getText().isEmpty() || !idCibo.isSelected() && !idVestiti.isSelected() && !tutto.isSelected()) {
-			MyException e = new MyException("Alcuni campi sono vuoti.",MyException.CAMPI_VUOTI);
-			throw e;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+
 		}
 		return true; 				
 	}

@@ -76,8 +76,8 @@ public class PromuoviEventoBoundary {
 				tipo = "Cibo";
 			}
 			if(nome.getText().isEmpty() && prezzo.getText().isEmpty()) {
-				MyException e = new MyException("Alcuni campi sono vuoti",MyException.CAMPI_VUOTI);
-				throw e;
+				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
+
 			}
 		
 			return false;

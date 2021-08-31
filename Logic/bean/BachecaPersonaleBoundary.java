@@ -113,8 +113,8 @@ public class BachecaPersonaleBoundary {
 	
 	public boolean check() throws MyException{
 		if(this.necc == null) {
-			MyException e = new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
-			throw e;
+			
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
 			
 		}
 		return true;

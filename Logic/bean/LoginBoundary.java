@@ -102,8 +102,8 @@ public class LoginBoundary {
 	public boolean check() throws MyException {
 		String loggedUser = loginC.loginAccess(usernameField.getText(), passwordField.getText());
 		if (loggedUser == null) {
-			MyException e = new MyException("Utente non registrato.",MyException.UTENTE_NON_REGISTRATO);
-			throw e;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.UTENTE_NON_REGISTRATO);
+
 		}
 		return true;
 	}

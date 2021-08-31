@@ -113,8 +113,8 @@ public class GestisciEventiCaritasBoundary {
 	
 	public boolean check() throws MyException{
 		if(this.event == null) {
-			MyException e = new MyException("Devi selezionare una riga della tabella",MyException.CARITAS_ERROR);
-			throw e;	
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+	
 		}
 		return true;
 	}

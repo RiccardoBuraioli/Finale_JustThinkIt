@@ -217,7 +217,7 @@ public class CercaCaritas {
 	String	s = "errore IoException";
 	private void indietro() {
 	
-	if (ruolo.equals(this.VOLUNTEER)) {
+	if (ruolo.equals(VOLUNTEER)) {
 		 try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/UserHomePage.fxml"));
 				Parent root = loader.load();

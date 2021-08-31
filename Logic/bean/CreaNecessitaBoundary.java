@@ -77,8 +77,8 @@ public class CreaNecessitaBoundary {
 	
 	public boolean checker() throws MyException {
 		if ( this.text[0].getText() == null || this.tipologia.getValue() == null || this.urgenza.getValue() == null) {
-			MyException e = new MyException("Alcuni campi sono vuoti",MyException.CARITAS_ERROR);
-			throw e;
+			throw new MyException("Devi selezionare una riga della taballa",MyException.CARITAS_ERROR);
+
 		}
 		return true;
 		

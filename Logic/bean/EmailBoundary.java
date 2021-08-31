@@ -69,8 +69,8 @@ public class EmailBoundary {
 	public boolean checker() throws MyException {
 		
 			if (this.mittente.getText().isEmpty() || this.destinatario.getText().isEmpty() || this.textMex[0].getText().isEmpty() ) {
-				MyException e = new MyException("Alcuni campi sono vuoti.",MyException.EMAIL_ERROR);
-				throw e;
+				throw new MyException("Devi selezionare una riga della taballa",MyException.EMAIL_ERROR);
+
 				}	
 		return true;
 			
