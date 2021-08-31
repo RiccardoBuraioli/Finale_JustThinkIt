@@ -89,22 +89,15 @@ public class RegistrazioneVolontarioBoundary {
 			regC.completaButtonPressed(nome.getText(), cognome.getText(), password.getText(), via.getText(),
 					tel.getText(), mail.getText(), date.getValue().toString(), cittaRes.getText());
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Login_boundary.fxml"));
-			Parent root = loader.load();
-			Stage home = (Stage) completaReg.getScene().getWindow();
-			home.setScene(new Scene(root));
-
-			home.show();
+			
+			TransizionePagine switchPage = new TransizionePagine();
+			switchPage.visualizzaPagina("/boundary/Login_boundary.fxml", completaReg.getScene().getWindow());
+		
 		} catch (NumberFormatException e) {
 			logger.error("Non sono presenti solo numeri in Telefono o N civico" + e.getMessage());
 		} catch (MyException e) {
 			logger.error(e.getMessage());
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("login");
-
-		}
-
+		} 
 	}
 
 	public boolean checker() throws MyException {
