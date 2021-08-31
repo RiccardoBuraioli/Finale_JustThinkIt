@@ -59,9 +59,9 @@ public class CercaCaritas {
 	private int idEvento;
 	private String ruolo;
 	private int idUser;
-	private static final String v = "Volontario";
-	private static final String n = "Negozio";
-	private static final String c = "Caritas";
+	private static final String volunteer = "Volontario";
+	private static final String shop = "Negozio";
+	private static final String caritas = "Caritas";
 	
 	/** logger for the class. */
 	private static final Logger logger = LoggerFactory.getLogger(CercaCaritas.class);
@@ -216,7 +216,7 @@ public class CercaCaritas {
 	String	s = "errore IoException";
 	private void indietro() {
 	
-	if (ruolo.equals(v)) {
+	if (ruolo.equals(volunteer)) {
 		 try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/UserHomePage.fxml"));
 				Parent root = loader.load();
@@ -234,7 +234,7 @@ public class CercaCaritas {
 	}
 	
 	
-	else if(ruolo.equalsIgnoreCase(n)) {
+	else if(ruolo.equalsIgnoreCase(shop)) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ShopHomePage.fxml"));
 			Parent root = loader.load();
@@ -252,7 +252,7 @@ public class CercaCaritas {
 		}
 	}
 	
-	else if(ruolo.equalsIgnoreCase(c)) {
+	else if(ruolo.equalsIgnoreCase(caritas)) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/CaritasHomePage.fxml"));
 			Parent root = loader.load();
@@ -404,7 +404,7 @@ public class CercaCaritas {
 		this.ruolo = ruolo;
 		this.idUser = idUser;
 		
-		if (this.ruolo.contentEquals(c)) {
+		if (this.ruolo.contentEquals(caritas)) {
 		markerEventi =	cercaController.initMarkersEvento(this.idUser);
 		for (MarkerID markerE : markerEventi) {
 			markerE.getMarker().setVisible(false);
@@ -413,7 +413,7 @@ public class CercaCaritas {
 		for (MarkerID markerD : markerDonazioni) {
 			markerD.getMarker().setVisible(false);
 		}
-		}else if(this.ruolo.contentEquals(v)) {
+		}else if(this.ruolo.contentEquals(volunteer)) {
 			markerEventi=cercaController.initMarkersEvento();
 			for (MarkerID markerE : markerEventi) {
 				markerE.getMarker().setVisible(false);
@@ -503,15 +503,15 @@ public class CercaCaritas {
 
 		setupEventHandlers();
 		switch (this.ruolo) {
-		case "Volontario":
+		case volunteer:
 			setMarkerVolontario();
 			break;
 			
-		case "Negozio":
+		case shop:
 			setMarkerNegozio();
 			break;
 			
-		case "Caritas":
+		case caritas:
 			setMarkerCaritas();
 			break;
 			
@@ -727,7 +727,7 @@ public class CercaCaritas {
 		for (Node node : lista) {
 			Button btn = (Button) node;
 			switch (ruolo) {
-			case v:
+			case volunteer:
 				switch (btn.getId()) {
 				case PRO:
 				case BAC:
@@ -739,7 +739,8 @@ public class CercaCaritas {
 				default:
 					break;
 				}
-			case n:
+				break;
+			case shop:
 				switch (btn.getId()) {
 				case EVE:
 				case PRO:
@@ -752,14 +753,19 @@ public class CercaCaritas {
 				default:
 					break;
 				}
+				break;
+				
+				default:
+					break;
 
 			}
+			
 		}
 	}
 	public void removeButtonCaritas(String ruolo,ObservableList<Node> lista, List<Node> listaBottoniDaRimuovere) {
 		for (Node node : lista) {
 			Button btn = (Button) node;
-			if (ruolo.equalsIgnoreCase(v)) {
+			if (ruolo.equalsIgnoreCase(volunteer)) {
 				switch (btn.getId()) {
 				case EVE:
 				case PRO:
@@ -774,7 +780,7 @@ public class CercaCaritas {
 
 	
 
-			if (ruolo.equalsIgnoreCase(n)) {
+			if (ruolo.equalsIgnoreCase(shop)) {
 				switch (btn.getId()) {
 				case EVE:
 				case TURN:
@@ -787,7 +793,7 @@ public class CercaCaritas {
 				}
 			}
 			
-			if(ruolo.equalsIgnoreCase(c)) {
+			if(ruolo.equalsIgnoreCase(caritas)) {
 				switch(btn.getId()) {
 					case EVE:
 					case TURN:
@@ -848,12 +854,12 @@ public class CercaCaritas {
 		mapView.setCenter(RomaCentro);
 		// add the markers to the map - they are still invisible
 
-		if (this.ruolo.contentEquals(c) || this.ruolo.contentEquals(v)) {
+		if (this.ruolo.contentEquals(caritas) || this.ruolo.contentEquals(volunteer)) {
 		for (int i = 0; i < markerEventi.size(); i++) {
 			mapView.addMarker(markerEventi.get(i).getMarker());
 		}}
 	
-		if(this.ruolo.contentEquals(c)) {
+		if(this.ruolo.contentEquals(caritas)) {
 		for (int i = 0; i < markerDonazioni.size(); i++) {
 			mapView.addMarker(markerDonazioni.get(i).getMarker());
 		}}

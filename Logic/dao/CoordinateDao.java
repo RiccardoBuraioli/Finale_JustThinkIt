@@ -14,7 +14,7 @@ import com.sothawo.mapjfx.Coordinate;
 import connector.Connector;
 
 public class CoordinateDao {
-
+	
 	private Connector connector;
 	private int idUtente;
     private static final Logger logger = LoggerFactory.getLogger(CoordinateDao.class);
@@ -39,25 +39,29 @@ public class CoordinateDao {
         	   pstmt.setInt(1, idUtente);
         	   pstmt.setString(2, lat);
         	   pstmt.setString(3, lon);
+        	   
+        	   
+        	   UpdateQueryDao upQuery = new UpdateQueryDao();
+        	   upQuery.updateQuery(pstmt);
 
-               int rowAffected = pstmt.executeUpdate();
+              /* int rowAffected = pstmt.executeUpdate();
                if (rowAffected == 1) {
 
                    rs = pstmt.getGeneratedKeys();
              
-               }
+               }*/
            } catch (SQLException ex) {
                logger.debug(ex.getMessage());
-           } finally {
+           }  /*  finally {
                try {
                    if (rs != null) rs.close();
                } catch (SQLException e) {
                    logger.debug(e.getMessage());
-               }
+               }*/
            }
   
     	
-    }
+ 
     
     
     public Coordinate getCoordinate() {

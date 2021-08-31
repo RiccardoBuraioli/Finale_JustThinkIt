@@ -77,20 +77,24 @@ public class BachecaDao {
 	        	pstmt.setString(3, necessita.getDescrizione());
 	        	pstmt.setInt(4, codCaritas);
 
-	            int rowAffected = pstmt.executeUpdate();
-	            if (rowAffected == 1) {
+	        	   UpdateQueryDao upQuery = new UpdateQueryDao();
+	        	   upQuery.updateQuery(pstmt);
 
-	                rs = pstmt.getGeneratedKeys();
-	               
-	            }
-	        } catch (SQLException ex) {
-	        	  logger.debug(ex.getMessage());	
-	        	  } finally {
-	            try {
-	                if (rs != null) rs.close();
-	            } catch (SQLException e) {
-	            	  logger.debug(e.getMessage());	            }
-	        }
+	              /* int rowAffected = pstmt.executeUpdate();
+	               if (rowAffected == 1) {
+
+	                   rs = pstmt.getGeneratedKeys();
+	             
+	               }*/
+	           } catch (SQLException ex) {
+	               logger.debug(ex.getMessage());
+	           }  /*  finally {
+	               try {
+	                   if (rs != null) rs.close();
+	               } catch (SQLException e) {
+	                   logger.debug(e.getMessage());
+	               }*/
+	           
 	        return true;
 	}
 	
