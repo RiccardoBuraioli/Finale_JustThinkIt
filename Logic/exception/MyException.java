@@ -3,13 +3,13 @@ package exception;
 
 
 public class MyException extends Exception {
-	public final static int EMAIL_ERROR = 400;
-	public final static int CARITAS_ERROR = 200;
-	public final static int NEGOZIO_ERROR = 300;
-	public final static int VOLONTARIO_ERROR = 100;
-	public final static int CAMPI_VUOTI = 103; 
-	public final static int ORARIO = 105;
-	public final static int UTENTE_NON_REGISTRATO = 106;
+	public static final  int EMAIL_ERROR = 400;
+	public static final  int CARITAS_ERROR = 200;
+	public static  final  int NEGOZIO_ERROR = 300;
+	public static final  int VOLONTARIO_ERROR = 100;
+	public static final  int CAMPI_VUOTI = 103; 
+	public static final  int ORARIO = 105;
+	public static final  int UTENTE_NON_REGISTRATO = 106;
 	/**
 	 * 
 	 */

@@ -14,8 +14,7 @@ public class MyIOException extends IOException{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String user;
-	private UserDao userDao = new UserDao();
+
 	
  public MyIOException() {
 	 super("Error IOException");
@@ -28,7 +27,7 @@ public class MyIOException extends IOException{
 	 	Alert alert = new Alert(AlertType.CONFIRMATION);
     	alert.setTitle("Errore");
     	alert.setHeaderText("La pagina "+ pagina +  " richiesta non è stata trovata, riprovare più tardi");
-    	Optional<ButtonType> result = alert.showAndWait();
+    	alert.showAndWait();
 	 
  }
 

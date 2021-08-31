@@ -59,9 +59,9 @@ public class CercaCaritas {
 	private int idEvento;
 	private String ruolo;
 	private int idUser;
-	private String v = "Volontario";
-	private String n = "Negozio";
-	private String c = "Caritas";
+	private static final String v = "Volontario";
+	private static final String n = "Negozio";
+	private static final String c = "Caritas";
 	
 	/** logger for the class. */
 	private static final Logger logger = LoggerFactory.getLogger(CercaCaritas.class);
@@ -726,7 +726,8 @@ public class CercaCaritas {
 	public void removeButtonEventi(String ruolo,ObservableList<Node> lista, List<Node> listaBottoniDaRimuovere) {
 		for (Node node : lista) {
 			Button btn = (Button) node;
-			if (ruolo.equalsIgnoreCase(v)) {
+			switch (ruolo) {
+			case v:
 				switch (btn.getId()) {
 				case PRO:
 				case BAC:
@@ -738,7 +739,7 @@ public class CercaCaritas {
 				default:
 					break;
 				}
-			} else{
+			case n:
 				switch (btn.getId()) {
 				case EVE:
 				case PRO:
