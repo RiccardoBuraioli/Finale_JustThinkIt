@@ -620,16 +620,6 @@ public class CercaCaritas {
 
 			
 			switchPosition(newPosition);
-			if (markerClick.getVisible()) {
-				final Coordinate oldPosition = markerClick.getPosition();
-
-			
-
-				markerClick.setPosition(newPosition);
-				// adding can only be done after coordinate is set
-				mapView.addMarker(markerClick);
-
-			}
 			setVisibilityButton();
 
 		});
@@ -693,9 +683,6 @@ public class CercaCaritas {
 	
 	private void switchPosition(Coordinate newPosition) {
 		if (markerClick.getVisible()) {
-			final Coordinate oldPosition = markerClick.getPosition();
-
-		
 
 			markerClick.setPosition(newPosition);
 			// adding can only be done after coordinate is set
