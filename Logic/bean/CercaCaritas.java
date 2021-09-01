@@ -660,14 +660,14 @@ public class CercaCaritas {
 					idCaritas = markerC.getId();
 				}
 			}
-
+			if (markerEventi != null) {
 			for (MarkerID markerE : markerEventi) {
 				if (marker.getId().equals(markerE.getMarker().getId())) {
 					logger.debug("Hai cliccato un evento");
 					updateButtonsBox(MarkerType.EVENTO);
 					idEvento = markerE.getId();
 				}
-			}
+			}}
 			
 		
 			if (marker.equals(markerClick)) {
@@ -756,6 +756,21 @@ public class CercaCaritas {
 				}
 				break;
 				
+				
+			case CARITAS:
+				switch (btn.getId()) {
+				case EVE:
+				case PRO:
+				case TURN:
+				case ALL:
+				case BAC:
+				case DON:
+					listaBottoniDaRimuovere.add(btn);
+					break;
+				default:
+					break;
+				}
+				break;
 				default:
 					break;
 

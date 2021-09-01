@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class PromuoviEventoBoundary {
@@ -47,9 +48,10 @@ public class PromuoviEventoBoundary {
 	    	PromuoviEventoController promuoviEvento = new PromuoviEventoController();
 	    	Trigger trigger = new Trigger();
 			try {
-				if (checker() && trigger.isNumeric(prezzo.getText())) {
+				if (!checker() && trigger.isNumeric(prezzo.getText())) {
 					promuoviEvento.creaEventoController(nome.getText(), tipo, note.getText(), Float.parseFloat(prezzo.getText()), idCar, idShop);
-				}
+					Stage st = (Stage) conferma.getScene().getWindow();
+					st.close();				}
 			} catch (NumberFormatException n) {
 				logger.error("In Prezzo non sono presenti solo numeri" + n.getMessage());
 			} catch (MyException e) {

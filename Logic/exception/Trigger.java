@@ -9,7 +9,7 @@ public class Trigger {
 
 	
 	
-	 public boolean isNumeric(String str) throws MyException, NumberFormatException { 
+	 public  boolean isNumeric(String str) throws MyException, NumberFormatException { 
 		  if (str.isEmpty()) {
 				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
 
@@ -21,7 +21,7 @@ public class Trigger {
 		    return true;     
 		}
 	 
-	 public boolean isNumerico(String str) throws MyException, NumberFormatException { 
+	 public  boolean isNumerico(String str) throws MyException, NumberFormatException { 
 		  if (str.isEmpty()) {
 				throw new MyException(" seleziona una riga della taballa",MyException.CAMPI_VUOTI);
  
