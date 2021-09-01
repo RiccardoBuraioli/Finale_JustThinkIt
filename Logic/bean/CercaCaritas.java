@@ -618,6 +618,8 @@ public class CercaCaritas {
 			final Coordinate newPosition = event.getCoordinate().normalize();
 			labelEvent.setText("Event: map clicked at: " + newPosition);
 
+			
+			switchPosition(newPosition);
 			if (markerClick.getVisible()) {
 				final Coordinate oldPosition = markerClick.getPosition();
 
@@ -650,7 +652,7 @@ public class CercaCaritas {
 		mapView.addEventHandler(MarkerEvent.MARKER_CLICKED, event -> {
 
 			event.consume();
-			Marker marker = event.getMarker();
+			Marker marker = event.getMarker();		
 			for (MarkerID markerC : markerCaritas) {
 				if (marker.getId().equals(markerC.getMarker().getId())) {
 					logger.debug("Hai cliccato sulla caritas.");
@@ -666,7 +668,7 @@ public class CercaCaritas {
 					this.idEvento = markerE.getId();
 				}
 			}}
-			checkPositionButton(event,marker);
+			checkPositionButton(marker);
 			labelEvent.setText("Event: marker clicked: " + marker.getId());
 		});
 		mapView.addEventHandler(MarkerEvent.MARKER_RIGHTCLICKED, event -> {
@@ -689,7 +691,24 @@ public class CercaCaritas {
 	
 	
 	
-	public void checkPositionButton(MarkerEvent event, Marker marker) {
+	private void switchPosition(Coordinate newPosition) {
+		if (markerClick.getVisible()) {
+			final Coordinate oldPosition = markerClick.getPosition();
+
+		
+
+			markerClick.setPosition(newPosition);
+			// adding can only be done after coordinate is set
+			mapView.addMarker(markerClick);
+
+		}
+		
+	}
+
+
+
+
+	public void checkPositionButton( Marker marker) {
 	
 	
 		if (marker.equals(markerClick)) {
