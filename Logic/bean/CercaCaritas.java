@@ -651,28 +651,7 @@ public class CercaCaritas {
 
 			event.consume();
 			Marker marker = event.getMarker();
-			posMarker = marker.getPosition();
-
-			for (MarkerID markerC : markerCaritas) {
-				if (marker.getId().equals(markerC.getMarker().getId())) {
-					logger.debug("Hai cliccato sulla caritas.");
-					updateButtonsBox(MarkerType.CARITASMARKER);
-					idCaritas = markerC.getId();
-				}
-			}
-			if (markerEventi != null) {
-			for (MarkerID markerE : markerEventi) {
-				if (marker.getId().equals(markerE.getMarker().getId())) {
-					logger.debug("Hai cliccato un evento");
-					updateButtonsBox(MarkerType.EVENTO);
-					idEvento = markerE.getId();
-				}
-			}}
-			
-		
-			if (marker.equals(markerClick)) {
-				updateButtonsBox(MarkerType.MAP);
-			}
+			checkButton(event,marker);
 			labelEvent.setText("Event: marker clicked: " + marker.getId());
 		});
 		mapView.addEventHandler(MarkerEvent.MARKER_RIGHTCLICKED, event -> {
@@ -691,6 +670,36 @@ public class CercaCaritas {
 
 		logger.trace("map handlers initialized");
 	}
+	
+	
+	
+	
+	public void checkButton(MarkerEvent event, Marker marker) {
+		marker = event.getMarker();
+		posMarker = marker.getPosition();
+		for (MarkerID markerC : markerCaritas) {
+			if (marker.getId().equals(markerC.getMarker().getId())) {
+				logger.debug("Hai cliccato sulla caritas.");
+				updateButtonsBox(MarkerType.CARITASMARKER);
+				idCaritas = markerC.getId();
+			}
+		}
+		if (markerEventi != null) {
+		for (MarkerID markerE : markerEventi) {
+			if (marker.getId().equals(markerE.getMarker().getId())) {
+				logger.debug("Hai cliccato un evento");
+				updateButtonsBox(MarkerType.EVENTO);
+				idEvento = markerE.getId();
+			}
+		}}
+		
+	
+		if (marker.equals(markerClick)) {
+			updateButtonsBox(MarkerType.MAP);
+		}
+	}
+	
+	
 
 	public void updateButtonsBox(MarkerType markerType) {
 		for (Node nod : listaBottoniOld) {
