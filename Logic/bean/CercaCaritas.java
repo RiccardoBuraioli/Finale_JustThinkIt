@@ -71,7 +71,7 @@ public class CercaCaritas {
 	
 
 
-	private static Coordinate posMarker = null;
+	
 
 	/** default zoom value. */
 	private static final int ZOOMDEFAULT = 14;
@@ -676,12 +676,11 @@ public class CercaCaritas {
 	
 	public void checkButton(MarkerEvent event, Marker marker) {
 		marker = event.getMarker();
-		posMarker = marker.getPosition();
 		for (MarkerID markerC : markerCaritas) {
 			if (marker.getId().equals(markerC.getMarker().getId())) {
 				logger.debug("Hai cliccato sulla caritas.");
 				updateButtonsBox(MarkerType.CARITASMARKER);
-				idCaritas = markerC.getId();
+				this.idCaritas = markerC.getId();
 			}
 		}
 		if (markerEventi != null) {
@@ -689,7 +688,7 @@ public class CercaCaritas {
 			if (marker.getId().equals(markerE.getMarker().getId())) {
 				logger.debug("Hai cliccato un evento");
 				updateButtonsBox(MarkerType.EVENTO);
-				idEvento = markerE.getId();
+				this.idEvento = markerE.getId();
 			}
 		}}
 		
