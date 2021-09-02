@@ -18,7 +18,7 @@ public class GestisciEventiCaritasBoundary {
 		private PromuoviEventoGenerale prom;
 		private int idCar;
 		private Logger logger = LoggerFactory.getLogger(GestisciEventiBoundary.class.getName());
-		private Trigger trigger;
+		private Trigger trigger = new Trigger();
 		
 		private EventTab event;
 		
@@ -60,9 +60,9 @@ public class GestisciEventiCaritasBoundary {
 	    	}
 	    	else {
 	    		try {
-					if(trigger.isNumerico(id)) {
-						gestEventC.cancellaEvento(Integer.parseInt(id));
-					}
+					this.trigger.isNumerico(id);
+					this.gestEventC.cancellaEvento(Integer.parseInt(id));
+					
 				} catch (NumberFormatException e) {
 					logger.error("Inserisci un id corretto" + e.getMessage());
 				} catch (MyException e) {

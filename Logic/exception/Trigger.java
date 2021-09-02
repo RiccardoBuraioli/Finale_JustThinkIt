@@ -13,10 +13,10 @@ public class Trigger {
 		  if (str.isEmpty()) {
 				throw new MyException("Devi selezionare una riga della taballa",MyException.CAMPI_VUOTI);
 
-		  }else{
-			 if(Float.parseFloat(str)== 0) {	
+		  }else if(Float.parseFloat(str)== 0){
+				
 					throw new MyException("l'id della riga selezionata non è stato trovato",MyException.CAMPI_VUOTI);
-}
+
 		  }
 		    return true;     
 		}
@@ -25,10 +25,10 @@ public class Trigger {
 		  if (str.isEmpty()) {
 				throw new MyException(" seleziona una riga della taballa",MyException.CAMPI_VUOTI);
  
-		  }else{
-			 if(Float.parseFloat(str)== 0) {	
-					throw new MyException("l'id passato non è corretto",MyException.CARITAS_ERROR);
-}  
+		  }else if(Integer.parseInt(str) == 0){
+			 Integer.parseInt(str);	
+			 throw new MyException("l'id passato non è corretto",MyException.CARITAS_ERROR);
+
 		  }
 		    return true;     
 		}
