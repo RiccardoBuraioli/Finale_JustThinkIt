@@ -23,8 +23,6 @@ public class BachecaController  {
 	private static Logger logger = LoggerFactory.getLogger(BachecaController.class.getName());
 
 	
-	private static BachecaController instance = null;
-
 	public List<Necessita> loadForm(int idCar) {
 		BachecaDao bacheca = new BachecaDao();
 		BachecaEntity bachecaEntity = new BachecaEntity();
