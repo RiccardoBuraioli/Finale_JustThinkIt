@@ -27,14 +27,9 @@ public class CaritasHomeBoundary {
 	
 	
 	private static Logger logger = LoggerFactory.getLogger(CaritasHomeBoundary.class.getName());
-	
-
-	private GestisciTurniBoundary gestTurn;
-	private GestisciDonazioniBoundary gestDon;
-	private GestisciOffertaCaritas gestOff;
-	private BachecaPersonaleBoundary bacheca;
 
 
+	private CaritasHomeController caritasHomeController;
 
 
 	@FXML
@@ -80,10 +75,8 @@ public class CaritasHomeBoundary {
 
 
 	public CaritasHomeBoundary() {
-		bacheca = new BachecaPersonaleBoundary();
-		gestTurn = new GestisciTurniBoundary();
-		gestDon = new GestisciDonazioniBoundary();
-		gestOff = new GestisciOffertaCaritas();
+		 caritasHomeController = new CaritasHomeController();
+
 	}
 	
 
@@ -96,88 +89,24 @@ public class CaritasHomeBoundary {
 
 	@FXML
 	void gestisciDonazioni(ActionEvent event) {
-
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("../boundary/Gestisci_Donazioni.fxml"));
-			gestDon = fxmlLoader.getController();
-			Stage stage = (Stage) eventiC.getScene().getWindow();
-			stage.setTitle("Gestisci Eventi");
+      caritasHomeController.apiriGestDonazioni(idCar, offerteProposte.getScene().getWindow());
 		
-			gestDon.loadFormBoundary(idCar);
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Donazioni");
-		}
 	}
 
 	@FXML
 	void gestisciEventi(ActionEvent event) {
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent rootNode = fxmlLoader
-					.load(getClass().getResourceAsStream("../boundary/Gestisci_eventi_caritas.fxml"));
-			GestisciEventiCaritasBoundary gestisciB = fxmlLoader.getController();
-			Stage stage = (Stage) eventiC.getScene().getWindow();
-			stage.setTitle("Gestisci Eventi");
-			
-			gestisciB.loadShop(idCar);
-			stage.setScene(new Scene(rootNode, 800, 500));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Eventi Caritas");
-		}
+		caritasHomeController.apriGestEventi(idCar, offerteProposte.getScene().getWindow());
 	}
 
 	@FXML
 	void gestisciTurni(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/gestisci_turni_caritas.fxml"));
-			Parent root = loader.load();
-
-			Stage home = (Stage) turni.getScene().getWindow();
-
-			gestTurn = loader.getController();
-
-			gestTurn.loadFormBoundary(idCar);
-
-			home.setScene(new Scene(root, 883, 550));
-			home.show();
-
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Bacheca Personale");
-		}
+		caritasHomeController.apriGestTurni(idCar, offerteProposte.getScene().getWindow());
 
 	}
 
 	@FXML 
 	void visualizzaBacheca(ActionEvent event) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/Bacheca_Personale.fxml"));
-			Parent root = loader.load();
-
-			Stage home = (Stage) vBacheca.getScene().getWindow();
-			home.setScene(new Scene(root, 775, 500));
-			home.show();
-
-			bacheca = loader.getController();
-		
-			bacheca.loadFormBoundary(idCar);
-
-		}catch (Exception e) {
-			logger.error(e.getMessage());
-			MyIOException.openPageFault("Gestisci Turni Caritas");
-		}
+	caritasHomeController.apriBacheca(idCar, offerteProposte.getScene().getWindow());
 	}
 
 	 @FXML
@@ -199,23 +128,7 @@ public class CaritasHomeBoundary {
 
 	    @FXML
 	    void offerteProposte(ActionEvent event) {
-	    	try {
-
-				FXMLLoader fxmlLoader = new FXMLLoader();
-				Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/GestisciOfferte.fxml"));
-
-				gestOff = fxmlLoader.getController();
-				Stage stage = (Stage) offerteProposte.getScene().getWindow();
-				stage.setTitle("Gestisci Offerte agli Eventi Proposti dalle Caritas");
-				gestOff.loadFormBoundary(idCar);
-				stage.setScene(new Scene(rootNode, 830, 530));
-				stage.setResizable(false);
-				stage.show();
-
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				MyIOException.openPageFault("Gestisci Offerte Caritas");
-			}
+	    	caritasHomeController.apriOfferte(idCar,offerteProposte.getScene().getWindow());
 	    	
 	    }
 

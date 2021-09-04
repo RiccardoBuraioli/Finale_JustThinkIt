@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 
 public class GestisciEventiBoundary {
 	private static Logger logger = LoggerFactory.getLogger(GestisciEventiBoundary.class.getName());
+	TransizionePagine pagine = new TransizionePagine();
 
 	private GestisciEventiController gestEventC;
 	private int idShop;
@@ -68,32 +69,14 @@ public class GestisciEventiBoundary {
 	
 	@FXML
 	void backButtonPressed(ActionEvent event) {
-	TransizionePagine pagine = new TransizionePagine();
 	pagine.visualizzaShopHomePage( back.getScene().getWindow(), idShop);
 	}
 
 	@FXML
 	void contattaCaritas(ActionEvent event) {
 		
-				try {
-					check();
-					FXMLLoader fxmlLoader = new FXMLLoader();
-					Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/Email.fxml"));
-
-					EmailBoundary email = fxmlLoader.getController();
-					email.loadEmail(this.idCaritas, this.idShop);
-					Stage stage = new Stage();
-					stage.setTitle("Email");
-
-					stage.setScene(new Scene(rootNode, 800, 500));
-					stage.setResizable(false);
-					stage.show();
-
-					} catch (Exception e) {
-					logger.error(e.getMessage());
-					MyIOException.openPageFault("Email");
-				}
-			}
+	  pagine.goToEmail(idCaritas, idShop);
+	}
 		
 		
 			

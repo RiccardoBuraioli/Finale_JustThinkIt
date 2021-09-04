@@ -143,19 +143,7 @@ public class GestisciEventiCaritasBoundary {
 	
     @FXML
     void creaEventoGenerale(ActionEvent event) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/boundary/ProponiEventoGenerale.fxml"));
-				Parent root = loader.load();
-				this.promEv = loader.getController();
-				this.promEv.loadId(idCar);
-				Stage home = (Stage) creaEventoGenerale.getScene().getWindow();
-				home.setScene(new Scene(root, 750, 500));
-
-				home.show();
-			}  catch (Exception e) {
-				logger.error(e.getMessage());
-				MyIOException.openPageFault("Proponi Evento Generale");
-			}
+    	gestEventC.apriPaginaEvento(idCar, creaEventoGenerale.getScene().getWindow());
 		}
     
 
