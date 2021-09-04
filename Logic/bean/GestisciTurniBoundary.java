@@ -67,12 +67,11 @@ public class GestisciTurniBoundary {
 
 	private GestioneTurniCaritas gestTurn;
 
-	private CreaTurnoBoundary caritasTurniBoundary;
+
 
 
 	public GestisciTurniBoundary() {
 		this.gestTurn = new GestioneTurniCaritas();
-		this.caritasTurniBoundary = new CreaTurnoBoundary();
 	}
 
 	@FXML

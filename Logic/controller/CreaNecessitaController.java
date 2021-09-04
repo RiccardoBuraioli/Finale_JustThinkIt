@@ -44,7 +44,7 @@ public class CreaNecessitaController {
 			home.show();
 
 			BachecaPersonaleBoundary bacheca = loader.getController();
-			bacheca.loadFormBoundary(idCaritas);
+			bacheca.loadFormBoundary(idCar);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

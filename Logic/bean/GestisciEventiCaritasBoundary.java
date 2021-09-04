@@ -26,7 +26,6 @@ public class GestisciEventiCaritasBoundary {
 	private static Logger logger = LoggerFactory.getLogger(GestisciEventiCaritasBoundary.class.getName());
 	private GestisciEventiCaritasController gestEventC;
 	private int idCar;
-	private PromuoviEventoGenerale promEv;
 	private EventTab event;
 	
 
@@ -149,7 +148,6 @@ public class GestisciEventiCaritasBoundary {
 
 	public GestisciEventiCaritasBoundary() {
 		gestEventC = new GestisciEventiCaritasController();
-		promEv = new PromuoviEventoGenerale();
 	}
 
 }

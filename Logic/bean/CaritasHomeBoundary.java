@@ -26,7 +26,6 @@ public class CaritasHomeBoundary {
 	private int idCar;
 	
 	
-	private static Logger logger = LoggerFactory.getLogger(CaritasHomeBoundary.class.getName());
 
 
 	private CaritasHomeController caritasHomeController;

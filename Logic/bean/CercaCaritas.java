@@ -78,7 +78,7 @@ public class CercaCaritas {
 	private static final int ZOOMDEFAULT = 14;
 
 	/** the markers. */
-	private TransizionePagine switchPage;
+
 	private CercaCaritasController cercaController;
 
 	private List<MarkerID> markerCaritas;
@@ -218,7 +218,7 @@ public class CercaCaritas {
 	
 	String	s = "errore IoException";
 	private void indietro() {
-		switchPage = new TransizionePagine();
+		TransizionePagine switchPage = new TransizionePagine();
 	
 	if (ruolo.equals(VOLUNTEER)) {
 		switchPage.visualizzaUserHomePage(buttonBack.getScene().getWindow(), this.idUser);

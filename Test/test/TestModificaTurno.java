@@ -14,7 +14,7 @@ public class TestModificaTurno {
 	
 	@Test
 	public void checkModificaTurno() {
-		assertEquals(false, gestioneTurni.modificaTurno(11,"test", 17));
+		assertEquals(true, gestioneTurni.modificaTurno(11,"test", 17));
 		
 	}
 }

@@ -24,7 +24,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class BachecaBoundary {
-	private static Logger logger = LoggerFactory.getLogger(BachecaBoundary.class.getName());
 	private int idCar;
 	private int idUte;
 	BachecaController bachecaController = new BachecaController();

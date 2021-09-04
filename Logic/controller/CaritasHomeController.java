@@ -40,16 +40,11 @@ public class CaritasHomeController {
 		return this.currentUser;
 	}
 
-	public CaritasHomeController() {
-
-
-	}
-	
 	
 	public void apiriGestDonazioni(int idCar, Window offerteProposte) {
 		try {
 
-			 GestisciDonazioniBoundary gestDon = new GestisciDonazioniBoundary();
+			 GestisciDonazioniBoundary gestDon;
 
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("../boundary/Gestisci_Donazioni.fxml"));
@@ -88,7 +83,6 @@ public class CaritasHomeController {
 			}
 	}
 	public void apriGestEventi(int idCar, Window offerteProposte) {
-		 GestisciOffertaCaritas gestOff = new GestisciOffertaCaritas();
 		 try {
 
 				FXMLLoader fxmlLoader = new FXMLLoader();
@@ -130,7 +124,7 @@ public class CaritasHomeController {
 	
 	public void apriOfferte(int idCar, Window offerteProposte) {
 		try {
-			GestisciOffertaCaritas gestOff = new GestisciOffertaCaritas();
+			GestisciOffertaCaritas gestOff;
 
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			Parent rootNode = fxmlLoader.load(getClass().getResourceAsStream("/boundary/GestisciOfferte.fxml"));
