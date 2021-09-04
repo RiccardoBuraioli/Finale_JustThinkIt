@@ -26,7 +26,7 @@ public class Trigger {
 				throw new MyException(" seleziona una riga della taballa",MyException.CAMPI_VUOTI);
  
 		  }else if(Integer.parseInt(str) == 0){
-			 Integer.parseInt(str);	
+		
 			 throw new MyException("l'id passato non è corretto",MyException.CARITAS_ERROR);
 
 		  }
